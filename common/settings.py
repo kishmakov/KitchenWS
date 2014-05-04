@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'kitchen',
+    'ui',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +50,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'common.urls'
+
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 WSGI_APPLICATION = 'common.wsgi.application'
 
@@ -76,8 +79,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+# URLS section
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+SITE_URL = '127.0.0.1'
+STATIC_URL = 'static/'
 
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

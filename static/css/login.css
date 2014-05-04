@@ -1,0 +1,20 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+html, body {
+    height:100%;
+}
+
+.jumbotron {
+    height: 90%;
+}
+
+.modal-backdrop.am-fade {
+      opacity: 0.5;
+      transition: 0.15s linear;
+}
