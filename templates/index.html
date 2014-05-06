@@ -4,15 +4,18 @@
 <head>
     <meta charset="utf-8">
 	<title ng-bind="title">Loading ...</title>
-    <link rel='stylesheet' type='text/css' href="{% static "css/bootstrap.min.css" %}"/>
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css" />
+    <link href="{% static "css/kitchen.css" %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div ng-view>
+    </div>
   	<script src="{% static "js/angular.min.js" %}"></script>
   	<script src="{% static "js/angular-animate.min.js" %}"></script>
     <script src="{% static "js/angular-route.min.js" %}"></script>
   	<script src="{% static "js/angular-sanitize.min.js" %}"></script>
     <script src="{% static "js/angular-strap.min.js" %}"></script>
     <script src="{% static "js/angular-strap.tpl.min.js" %}"></script>
-    <script src="{% static "js/kitchen-ide.js" %}"></script>
-</head>
-<body ng-view>
+    <script src="{% static "js/kitchen.js" %}"></script>
 </body>
 </html>
