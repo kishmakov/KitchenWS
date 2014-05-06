@@ -4,4 +4,5 @@ from ui import views
 
 urlpatterns = patterns('',
     url(r'^login', views.login),
+    url(r'^ide', views.ide),
 )
