@@ -2,39 +2,34 @@
 
 angular.module('kitchen.controllers', ['ngRoute'])
 
-.controller('LoginCtrl',
-    ['$scope', '$location', '$http',
+.controller('LoginCtrl', ['$scope', '$location', '$http',
     function ($scope, $location, $http) {
-    $scope.scr = 'login';
-
-    $scope.authorization = {
-        login: '',
-        password: ''
-    };
-
-    $scope.logIn = function () {
-        var login = {
-            method: 'post',
-            url: '/authorization',
-            data: $scope.authorization
+        $scope.authorization = {
+            login: '',
+            password: ''
         };
 
-        $http(login)
-            .success(function(){ alert('Success!');})
-            .error(function(){ alert('Error.');});
+        function openProjects() {
+            $location.path('/ide/projects/');
+        }
 
-        $location.path('/ide/projects/');
-    };
+        function loginAgain() {
+            $location.path('/login/again/');
+        }
 
-    $scope.signUp = function () {
-        $scope.scr = 'signup';
-        $location.path('/login/signup/');
-    };
+        $scope.logIn = function () {
+            var login = {
+                method: 'post',
+                url: '/authorization/read/',
+                data: $scope.authorization
+            };
 
-    $scope.goBack = function () {
-        $scope.scr= 'login';
-        $location.path('/login/');
-    };
+            $http(login).success(openProjects).error(loginAgain);
+        };
+
+        $scope.signUp = function () {
+            $location.path('/authorization/write/');
+        };
 }])
 
 .controller('IDECtrl', ['$scope', '$location', function ($scope, $location) {
