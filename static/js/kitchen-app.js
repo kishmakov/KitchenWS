@@ -1,14 +1,15 @@
 'use strict';
 
 
+
 angular.module('kitchen', [
     'ngRoute',
     'kitchen.controllers'])
 
 .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/login', {controller: 'LoginCtrl', title: 'Login to Kitchen IDE', templateUrl: 'login/'});
-    $routeProvider.when('/ide', {controller: 'IDECtrl', title: 'Kitchen IDE', templateUrl: 'ide/'});
-    $routeProvider.when('/login/signup', {controller: 'LoginCtrl', title: 'Sign Up to Kitchen IDE'});
+    $routeProvider.when('/login/', {controller: 'LoginCtrl', title: 'Login to Kitchen IDE', templateUrl: '/login/'});
+    $routeProvider.when('/login/again/', {controller: 'LoginCtrl', title: 'Login to Kitchen IDE', templateUrl: '/login/again/'});
+    $routeProvider.when('/ide/projects/', {controller: 'IDECtrl', title: 'Kitchen IDE', templateUrl: '/ide/projects/'});
     $routeProvider.otherwise({redirectTo: '/login'});
 }]).
 

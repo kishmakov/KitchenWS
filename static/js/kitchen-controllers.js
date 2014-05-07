@@ -2,13 +2,38 @@
 
 angular.module('kitchen.controllers', ['ngRoute'])
 
-.controller('LoginCtrl', ['$scope', '$location', function ($scope, $location) {
+.controller('LoginCtrl',
+    ['$scope', '$location', '$http',
+    function ($scope, $location, $http) {
+    $scope.scr = 'login';
+
+    $scope.authorization = {
+        login: '',
+        password: ''
+    };
+
     $scope.logIn = function () {
-        $location.path('/ide');
+        var login = {
+            method: 'post',
+            url: '/authorization',
+            data: $scope.authorization
+        };
+
+        $http(login)
+            .success(function(){ alert('Success!');})
+            .error(function(){ alert('Error.');});
+
+        $location.path('/ide/projects/');
     };
 
     $scope.signUp = function () {
-        $location.path('/login/signup');
+        $scope.scr = 'signup';
+        $location.path('/login/signup/');
+    };
+
+    $scope.goBack = function () {
+        $scope.scr= 'login';
+        $location.path('/login/');
     };
 }])
 

@@ -13,10 +13,10 @@
             <div class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right" role="form">
                     <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control">
+                        <input type="text" placeholder="Email" class="form-control" ng-model="authorization.login">
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control">
+                        <input type="password" placeholder="Password" class="form-control" ng-model="authorization.password">
                     </div>
                     <button type="submit" class="btn btn-success" ng-click="logIn()">Log In</button>
                 </form>
@@ -24,8 +24,8 @@
         </div>
     </div>
 
-    <div class="jumbotron">
-        <div class="container">
+    <div class="jumbotron" ng-switch="scr">
+        <div class="container" ng-switch-when="login">
             <div class="row">
                 <div class="col-md-9">
                     <br>
@@ -37,13 +37,27 @@
                     <p><a class="btn btn-primary btn-lg" role="button" ng-click="signUp()">Sign Up</a> to get in</p>
                 </div>
             </div>
+        </div>
 
+        <div class="container" ng-switch-when="signup">
+            <div class="row">
+                <div class="col-md-6">
+                    <br>
+                    <h2>Hey, man!.</h2>
+                    <br>
+                </div>
+                <div class="col-md-6">
+                    <br>
+                    <p><a class="btn btn-primary btn-lg" role="button" ng-click="goBack()">Sign Up</a> to get in</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="container">
         <footer>
             <p>&copy; <a href="http://kshmakov.org">Kirill Shmakov</a></p>
+            Alala: {% verbatim %}{{ scr }}{% endverbatim %}
         </footer>
     </div>
 </div>
