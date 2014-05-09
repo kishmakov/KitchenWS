@@ -5,7 +5,7 @@ angular.module('kitchen.controllers', ['ngRoute'])
 .controller('LoginCtrl', ['$scope', '$location', '$http',
     function ($scope, $location, $http) {
         $scope.authorization = {
-            login: '',
+            username: '',
             password: ''
         };
 
@@ -21,7 +21,7 @@ angular.module('kitchen.controllers', ['ngRoute'])
             var login = {
                 method: 'post',
                 url: '/authorization/read/',
-                data: $scope.authorization
+                data: JSON.stringify($scope.authorization)
             };
 
             $http(login).success(openProjects).error(loginAgain);
