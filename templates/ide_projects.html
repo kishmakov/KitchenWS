@@ -16,6 +16,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <button type="button" class="btn btn-primary navbar-btn pull-right" ng-click="logOut()">Log Out</button>
             </div>
         </div>
     </div>
@@ -23,7 +24,9 @@
     <div class="container">
 
         <div class="starter-template">
-            <h1>{% verbatim %}Hi, {{name}}!{% endverbatim %}</h1>
+            <h1>Hi {{ first_name }} {{ last_name }}!</h1>
+
+            <p class="lead">Angular name is {% verbatim %}{{name}}.{% endverbatim %}</p>
 
             <p class="lead">Your csreftoken is hidden!</p>
 

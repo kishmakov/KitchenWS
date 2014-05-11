@@ -1,11 +1,9 @@
 from django.http import HttpResponseNotAllowed, HttpResponse
-from django.template import RequestContext
-from django.shortcuts import render_to_response
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 
 import json
 
-def read(request):
+def authorization_login(request):
     if request.method != 'POST':
         return HttpResponseNotAllowed(permitted_methods='POST')
 
@@ -13,10 +11,23 @@ def read(request):
     body = json.loads(request.body.decode("utf-8"))
     user = authenticate(username=body['username'], password=body['password'])
     if user is not None:
-        context_instance = RequestContext(request)
-        return render_to_response("ide_projects.html", {}, context_instance)
+        if user.is_active:
+            login(request, user)
+            return HttpResponse('Successful authorization', status=200)
+        else:
+            return HttpResponse('User is not active', status=420)
 
-    return HttpResponse('Unauthorized', status=401)
+    return HttpResponse('No such user', status=401)
 
-def write(request):
-    return "200"
+def authorization_logout(request):
+    if request.method != 'POST':
+        return HttpResponseNotAllowed(permitted_methods='POST')
+
+    if not request.user.is_active:
+        return HttpResponse('User was not logged in', status=200)
+
+    logout(request)
+    return HttpResponse('Successful logout', status=200)
+
+def authorization_signup(request):
+    return HttpResponse('Not yet', status=404)
