@@ -9,6 +9,17 @@ function ($scope, $location, $http, $rootScope) {
         password: ''
     };
 
+    $scope.registration = {
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        password: '',
+        verification: ''
+    };
+
+    $scope.autoRegistration = 'off';
+
     $scope.firstName = $rootScope.firstName || '';
     $scope.lastName = $rootScope.lastName || '';
     $scope.loggedIn = $rootScope.loggedIn || false;
