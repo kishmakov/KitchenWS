@@ -12,13 +12,18 @@ def ide_projects(request):
     context = RequestContext(request, name)
     return HttpResponse(template.render(context))
 
-def login(request):
+def login_welcome(request):
     if request.user.is_authenticated():
         return ide_projects(request)
 
     ci = RequestContext(request)
-    return render_to_response('login.html', context_instance=ci)
+    return render_to_response('login_welcome.html', context_instance=ci)
 
 def login_again(request):
     ci = RequestContext(request)
     return render_to_response('login_again.html', context_instance=ci)
+
+def login_wait(request):
+    template = get_template('login_wait.html')
+    context = RequestContext(request)
+    return HttpResponse(template.render(context))

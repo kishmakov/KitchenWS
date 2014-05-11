@@ -2,21 +2,35 @@
 
 angular.module('kitchen.controllers', ['ngRoute'])
 
-.controller('LoginCtrl', ['$scope', '$location', '$http', function ($scope, $location, $http) {
+.controller('LoginCtrl', ['$scope', '$location', '$http', '$rootScope',
+function ($scope, $location, $http, $rootScope) {
     $scope.authorization = {
         username: '',
         password: ''
     };
 
-    function loginSucceed() {
+    $scope.firstName = $rootScope.firstName || '';
+    $scope.lastName = $rootScope.lastName || '';
+    $scope.loggedIn = $rootScope.loggedIn || false;
+
+    function loginSucceed(data) {
+        $rootScope.firstName = data['first_name'];
+        $rootScope.lastName = data['last_name'];
+        $rootScope.loggedIn = true;
         $location.path('/ide/projects/');
     }
 
     function loginFailed(data, status) {
+        $rootScope.loggedIn = false;
+
         if (status == '401') {
             $location.path('/login/again/');
+            return;
         } else if (status == '420') {
+            $rootScope.firstName = data['first_name'];
+            $rootScope.lastName = data['last_name'];
             $location.path('/login/wait/');
+            return;
         }
 
         $location.path('/login/');
@@ -35,12 +49,24 @@ angular.module('kitchen.controllers', ['ngRoute'])
     $scope.signUp = function () {
         $location.path('/authorization/signup/');
     };
+
+    $scope.$on('$routeChangeSuccess', function () {
+        if ($scope.loggedIn) {
+            var data = {
+                firstName: $rootScope.firstName,
+                lastName: $rootScope.lastName
+            };
+            loginSucceed(data);
+        }
+    });
 }])
 
-.controller('IDECtrl', ['$scope', '$location', '$http', function ($scope, $location, $http) {
+.controller('IDECtrl', ['$scope', '$location', '$http', '$rootScope',
+function ($scope, $location, $http, $rootScope) {
     $scope.name = 'Kirill';
 
     function logoutSucceed() {
+        $rootScope.loggedIn = false;
         $location.path('/login/');
     }
 

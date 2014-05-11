@@ -11,11 +11,14 @@ def authorization_login(request):
     body = json.loads(request.body.decode("utf-8"))
     user = authenticate(username=body['username'], password=body['password'])
     if user is not None:
+        data = {'first_name': user.first_name, 'last_name': user.last_name}
         if user.is_active:
             login(request, user)
-            return HttpResponse('Successful authorization', status=200)
+            data['message'] = 'Successful authorization.'
+            return HttpResponse(json.dumps(data), status=200)
         else:
-            return HttpResponse('User is not active', status=420)
+            data['message'] = 'User registration pending.'
+            return HttpResponse(json.dumps(data), status=420)
 
     return HttpResponse('No such user', status=401)
 

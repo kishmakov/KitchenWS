@@ -10,7 +10,9 @@ angular.module('kitchen', [
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
     $routeProvider.when('/login/', {controller: 'LoginCtrl', title: 'Login to Kitchen IDE', templateUrl: '/login/'});
-    $routeProvider.when('/login/again/', {controller: 'LoginAgainCtrl', title: 'Login to Kitchen IDE', templateUrl: '/login/again/'});
+    $routeProvider.when('/login/again/', {controller: 'LoginCtrl', title: 'Login to Kitchen IDE', templateUrl: '/login/again/'});
+    $routeProvider.when('/login/wait/', {controller: 'LoginCtrl', title: 'User activation pending', templateUrl: '/login/wait/'});
+
     $routeProvider.when('/ide/projects/', {controller: 'IDECtrl', title: 'Kitchen IDE', templateUrl: '/ide/projects/'});
     $routeProvider.otherwise({redirectTo: '/login'});
 }]).
