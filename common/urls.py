@@ -9,6 +9,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'common.views.index'),
     url(r'^ide/', include('ui.ide_urls')),
+    url(r'^about/', include('ui.about_urls')),
     url(r'^login/', include('ui.login_urls')),
     url(r'^authorization/', include('authorization.urls')),
     url(r'^kitchen/$', include('kitchen.urls')),

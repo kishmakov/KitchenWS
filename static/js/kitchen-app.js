@@ -14,6 +14,9 @@ angular.module('kitchen', [
     $routeProvider.when('/login/wait/', {controller: 'LoginCtrl', title: 'User activation pending', templateUrl: '/login/wait/'});
 
     $routeProvider.when('/ide/projects/', {controller: 'IDECtrl', title: 'Kitchen IDE', templateUrl: '/ide/projects/'});
+
+    $routeProvider.when('/about/legal/', {title: 'Kitchen IDE Legal', templateUrl: '/about/legal/'});
+
     $routeProvider.otherwise({redirectTo: '/login'});
 }]).
 
@@ -26,6 +29,10 @@ run(['$location', '$rootScope', '$templateCache',
         $rootScope.$on('$viewContentLoaded', function() {
             $templateCache.removeAll();
         });
+
+        $rootScope.navigate = function(destanation) {
+            $location.path(destanation);
+        }
     }
 ]);
 
