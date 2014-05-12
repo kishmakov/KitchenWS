@@ -19,17 +19,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'ujel=1!^y^mbx1(vt*dy_z4qtimsqr1iszz8wk81^a@#!c%#ax'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.1.6']
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.1.6', 'kitchen.kshmakov.org']
 
 # Application definition
 
-INSTALLED_APPS = (
-    'django_extensions',
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +38,7 @@ INSTALLED_APPS = (
     'kitchen',
     'ui',
     'common',
-)
+]
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

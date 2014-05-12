@@ -7,7 +7,6 @@ def authorization_login(request):
     if request.method != 'POST':
         return HttpResponseNotAllowed(permitted_methods='POST')
 
-    print('body={0}'.format(request.body))
     body = json.loads(request.body.decode("utf-8"))
     user = authenticate(username=body['username'], password=body['password'])
     if user is not None:
