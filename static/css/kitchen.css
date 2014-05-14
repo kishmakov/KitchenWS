@@ -1,24 +1,18 @@
-html {
+html, body, .ng-scope, #wrap {
     height: 100%;
 }
 
 body {
-    height: 100%;
     padding-top: 50px;
 }
 
-.ng-scope {
-    height: 100%;
+#wrap {
+    margin: 0 0 -60px;
 }
 
 .jumbotron {
-    min-height: 500px;
-    height: 90%;
-}
-
-.modal-backdrop.am-fade {
-    opacity: 0.5;
-    transition: 0.15s linear;
+    height: 100%;
+    margin: 0;
 }
 
 .error-message {
@@ -41,7 +35,11 @@ a {
 /* Set the fixed height of the footer here */
 #footer {
     height: 60px;
-    background-color: #F5F5F5;
+    margin: 0 auto;
+}
+
+footer > div > a:hover {
+    color: #00bfff;
 }
 
 .kitchen-bottom-section {
