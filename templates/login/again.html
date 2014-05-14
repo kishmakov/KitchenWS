@@ -1,12 +1,6 @@
-<div ng-controller="LoginCtrl">
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Kitchen IDE</a>
-            </div>
-        </div>
-    </div>
+{% extends "login/base.html" %}
 
+{% block content %}
     <div class="jumbotron">
         <div class="container">
             <div class="row">
@@ -32,6 +26,4 @@
             </div>
         </div>
     </div>
-
-   {% include "footer_unathorized.html" %}
-</div>
+{% endblock %}

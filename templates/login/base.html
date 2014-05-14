@@ -1,0 +1,25 @@
+<div ng-controller="LoginCtrl">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Kitchen IDE</a>
+            </div>
+            {% block navbar %}
+            {% endblock %}
+        </div>
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+
+    <div class="container">
+        <footer class="row text-center">
+            <div class="col-md-2">
+                <p><a ng-click="navigate('/about/legal/')">Terms of Use</a></p>
+            </div>
+            <div class="col-md-2">
+                <p>&copy; <a href="http://kshmakov.org">Kirill Shmakov</a></p>
+            </div>
+        </footer>
+    </div>
+</div>
