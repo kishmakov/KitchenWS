@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="WebFaction">
+    <serverData>
+      <paths name="WebFaction">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/webapps/kitchen_static" local="$PROJECT_DIR$/static" web="/" />
+            <mapping deploy="/webapps/kitchen/authorization" local="$PROJECT_DIR$/authorization" web="/" />
+            <mapping deploy="/webapps/kitchen/common" local="$PROJECT_DIR$/common" web="/" />
+            <mapping deploy="/webapps/kitchen/kitchen" local="$PROJECT_DIR$/kitchen" web="/" />
+            <mapping deploy="/webapps/kitchen/templates" local="$PROJECT_DIR$/templates" web="/" />
+            <mapping deploy="/webapps/kitchen/ui" local="$PROJECT_DIR$/ui" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
+
