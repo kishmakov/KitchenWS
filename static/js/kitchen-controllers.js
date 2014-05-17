@@ -93,4 +93,16 @@ function ($scope, $location, $http, $rootScope) {
 
         $http(logout).success(logoutSucceed).error(logoutFailed);
     };
+
+    $scope.newProject = function () {
+        alert('New Project');
+    };
+
+    $scope.newProjectFromFiles = function () {
+        alert('New Project From Files');
+    };
+
+    $scope.newProjectFromVCS = function () {
+        alert('New Project From VCS');
+    };
 }]);

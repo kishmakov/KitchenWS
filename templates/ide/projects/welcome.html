@@ -1,0 +1,35 @@
+{% extends "ide/projects/base.html" %}
+
+{% block navbar %}
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Shoes</a></li>
+        <li><a href="#about">Ships</a></li>
+        <li><a href="#contact">Sealing Wax</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+            </div>
+            <div class="col-md-5">
+                <h2 class="text-center">New Project</h2>
+                <hr>
+                <br>
+                <div class="kitchen-menu-item" ng-click="newProject()">
+                    <p class="lead">&nbsp;&nbsp;<i class="fa fa-plus"></i>
+                        &nbsp;Create New Project</p>
+                </div>
+                <div class="kitchen-menu-item" ng-click="newProjectFromFiles()">
+                    <p class="lead">&nbsp;&nbsp;<i class="fa fa-file"></i>
+                        &nbsp;Create New Project from Existing Files</p>
+                </div>
+                <div class="kitchen-menu-item" ng-click="newProjectFromVCS()">
+                    <p class="lead">&nbsp;&nbsp;<i class="fa fa-arrow-down"></i>
+                        &nbsp;Check out from Version Control</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

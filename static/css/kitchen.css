@@ -23,16 +23,6 @@ a {
     cursor: pointer;
 }
 
-/* Wrapper for page content to push down footer */
-/*#wrap {*/
-    /*min-height: 100%;*/
-    /*height: auto !important;*/
-    /*height: 100%;*/
-    /* Negative indent footer by it's height */
-    /*margin: 0 auto -60px;*/
-/*}*/
-
-/* Set the fixed height of the footer here */
 #footer {
     height: 60px;
     margin: 0 auto;
@@ -46,3 +36,21 @@ footer > div > a:hover {
     height: 100%;
     margin-top: 20px;
 }
+
+.kitchen-menu-item {
+    height: 80px;
+    padding-top: 25px;
+    margin: 8px;
+    cursor: pointer;
+    border-style: dotted;
+    border-width: 2px;
+    background: #428bca;
+    color: white;
+}
+
+.kitchen-menu-item:hover {
+    background: #3276b1;
+    border-style: solid;
+}
+
+
