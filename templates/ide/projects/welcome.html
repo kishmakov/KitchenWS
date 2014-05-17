@@ -11,21 +11,40 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
-            </div>
-            <div class="col-md-5">
-                <h2 class="text-center">New Project</h2>
+            <div class="col-md-6">
+                <h2 class="text-center">Existing Projects</h2>
                 <hr>
                 <br>
-                <div class="kitchen-menu-item" ng-click="newProject()">
+
+                <div class="row">
+                    {% for project_column in project_columns %}
+                        <div class="col-md-6">
+                            {% for project in project_column %}
+                                <div class="kitchen-old-project-item">
+                                    <h3>
+                                        {{ project.name }}<br>
+                                        <small>{{ project.modified }}</small>
+                                    </h3>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+                <h2 class="text-center">New Project Options</h2>
+                <hr>
+                <br>
+
+                <div class="kitchen-new-project-item" ng-click="newProject()">
                     <p class="lead">&nbsp;&nbsp;<i class="fa fa-plus"></i>
                         &nbsp;Create New Project</p>
                 </div>
-                <div class="kitchen-menu-item" ng-click="newProjectFromFiles()">
+                <div class="kitchen-new-project-item" ng-click="newProjectFromFiles()">
                     <p class="lead">&nbsp;&nbsp;<i class="fa fa-file"></i>
                         &nbsp;Create New Project from Existing Files</p>
                 </div>
-                <div class="kitchen-menu-item" ng-click="newProjectFromVCS()">
+                <div class="kitchen-new-project-item" ng-click="newProjectFromVCS()">
                     <p class="lead">&nbsp;&nbsp;<i class="fa fa-arrow-down"></i>
                         &nbsp;Check out from Version Control</p>
                 </div>

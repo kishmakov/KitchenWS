@@ -37,10 +37,10 @@ footer > div > a:hover {
     margin-top: 20px;
 }
 
-.kitchen-menu-item {
+.kitchen-new-project-item {
     height: 80px;
-    padding-top: 25px;
-    margin: 8px;
+    padding: 25px 0 0 10px;
+    margin-top: 8px;
     cursor: pointer;
     border-style: dotted;
     border-width: 2px;
@@ -48,9 +48,23 @@ footer > div > a:hover {
     color: white;
 }
 
-.kitchen-menu-item:hover {
+.kitchen-new-project-item:hover {
     background: #3276b1;
     border-style: solid;
+}
+
+.kitchen-old-project-item {
+    height: 80px;
+    padding-left: 10px;
+    margin-top: 8px;
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #eee;
+}
+
+.kitchen-old-project-item:hover {
+    background: #eee;
 }
 
 
