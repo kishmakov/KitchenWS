@@ -2,7 +2,7 @@ from django.template import RequestContext
 from django.template.loader import get_template
 from django.http import HttpResponse
 
-from kitchen.models import Project
+from kitchen.models import ProjectTitle
 
 def ide_projects(request):
     dictionary = {
@@ -11,7 +11,7 @@ def ide_projects(request):
         'project_columns': [[], []],
     }
 
-    projects = request.user.project_set.all()
+    projects = request.user.project_title_set.all()
     parity = 1
     for project in projects:
         parity += 1

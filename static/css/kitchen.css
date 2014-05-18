@@ -40,17 +40,14 @@ footer > div > a:hover {
 .kitchen-new-project-item {
     height: 80px;
     padding: 25px 0 0 10px;
-    margin-top: 8px;
+    margin-top: 10px;
     cursor: pointer;
-    border-style: dotted;
-    border-width: 2px;
     background: #428bca;
     color: white;
 }
 
 .kitchen-new-project-item:hover {
     background: #3276b1;
-    border-style: solid;
 }
 
 .kitchen-old-project-item {

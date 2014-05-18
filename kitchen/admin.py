@@ -1,4 +1,4 @@
 from django.contrib import admin
-from kitchen.models import Project
+from kitchen.models import ProjectTitle
 
-admin.site.register(Project)
+admin.site.register(ProjectTitle)
