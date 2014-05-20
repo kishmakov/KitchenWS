@@ -58,6 +58,13 @@ angular.module('kitchen', [
                 kitchenTitle.title = $route.current.params.projectName || 'Unnamed';
             }
         },
+        redirectTo: function (params) {
+            return '/ide/projects/' + params.id + '/';
+        }
+    });
+
+    $routeProvider.when('/ide/projects/:id/', {
+        controller: 'IDECtrl',
         templateUrl: function (params) {
             return '/ide/projects/' + params.id + '/';
         }
