@@ -74,7 +74,8 @@ function ($scope, $location, $http, $rootScope) {
 
 .controller('IDECtrl', ['$scope', '$location', '$http', '$rootScope',
 function ($scope, $location, $http, $rootScope) {
-    $scope.name = 'Kirill';
+
+    $scope.projectName = '123';
 
     function logoutSucceed() {
         $rootScope.loggedIn = false;
@@ -106,3 +107,4 @@ function ($scope, $location, $http, $rootScope) {
         alert('New Project From VCS');
     };
 }]);
+
