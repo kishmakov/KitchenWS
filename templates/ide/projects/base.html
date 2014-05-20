@@ -1,5 +1,5 @@
-<div id="wrap" ng-controller="IDECtrl">
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div ng-controller="IDECtrl">
+    <div id="header" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Kitchen IDE</a>
@@ -12,10 +12,19 @@
         </div>
     </div>
 
-    <div id="wrap">
+    <div id="kitchen-wrap">
         {% block content %}
         {% endblock content %}
     </div>
 
-    {% include "ide/footer.html" %}
+    <div class="container">
+        <footer id="footer" class="row navbar-inverse text-center">
+            <div class="col-md-2">
+                <a class="navbar" ng-click="navigate('/about/legal/')">Terms of Use</a>
+            </div>
+            <div class="col-md-2">
+                <a class="navbar" href="http://kshmakov.org">&copy; Kirill Shmakov</a>
+            </div>
+        </footer>
+    </div>
 </div>

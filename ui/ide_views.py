@@ -18,6 +18,7 @@ def ide_projects(request):
         name = project.project_name if len(project.project_name) <= 25 \
             else project.project_name[22] + '...'
         dictionary['project_columns'][parity % 2].append({
+            'id': project.id,
             'name': name,
             'modified': '{0:%Y-%m-%d}'.format(project.last_access)
         })
