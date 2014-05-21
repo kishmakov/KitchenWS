@@ -56,6 +56,7 @@ angular.module('kitchen', [
             projectName: function ($route, kitchenTitle) {
                 console.log('projectName=' + $route.current.params.projectName);
                 kitchenTitle.title = $route.current.params.projectName || 'Unnamed';
+                kitchenTitle.projectName = $route.current.params.projectName || 'Unnamed';
             }
         },
         redirectTo: function (params) {

@@ -4,6 +4,7 @@ angular.module('kitchen.services', [])
 
 .factory('kitchenTitle', function () {
     return {
-        title: ''
+        title: '',
+        projectName: ''
     };
 });

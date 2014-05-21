@@ -16,6 +16,22 @@ class ProjectTitle(models.Model):
         db_table = 'kitchen_project_title'
         verbose_name = 'Project Title'
 
+class ProjectSummary(models.Model):
+    lang_choices = [
+        ('ru', 'Russian'),
+        ('en', 'English')
+    ]
+
+    id = models.AutoField(primary_key=True)
+    project = models.ForeignKey(ProjectTitle, related_name='project_summary_set')
+    lang = models.CharField(max_length=2, choices=lang_choices, default='en')
+    summary = models.TextField()
+
+    class Meta:
+        db_table = 'kitchen_project_summary'
+        verbose_name = 'Project Summary'
+        verbose_name_plural = 'Project Summaries'
+
 
 class ProjectComputation(models.Model):
     id = models.AutoField(primary_key=True)
@@ -23,6 +39,7 @@ class ProjectComputation(models.Model):
     name = models.CharField(max_length=500)
     input = models.TextField()
     output = models.TextField()
+    comment = models.TextField()
 
     class Meta:
         db_table = 'kitchen_project_computation'
