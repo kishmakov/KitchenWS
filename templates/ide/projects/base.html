@@ -5,8 +5,12 @@
                 <a class="navbar-brand" href="#">Kitchen IDE</a>
             </div>
             <div class="collapse navbar-collapse">
-                {% block navbar %}
-                {% endblock %}
+                <ul class="nav navbar-nav">
+                    {% block navbar %}
+                    {% endblock %}
+                    <li><a ng-click="navigate('{{ project_url }}')">Settings</a></li>
+                    <li><a ng-click="navigate('{{ help_url }}')">Help</a></li>
+                </ul>
                 <button type="button" class="btn btn-primary navbar-btn pull-right" ng-click="logOut()">Log Out</button>
             </div>
         </div>
@@ -15,16 +19,5 @@
     <div id="kitchen-wrap">
         {% block content %}
         {% endblock content %}
-    </div>
-
-    <div class="container">
-        <footer id="footer" class="row navbar-inverse text-center">
-            <div class="col-md-2">
-                <a class="navbar" ng-click="navigate('/about/legal/')">Terms of Use</a>
-            </div>
-            <div class="col-md-2">
-                <a class="navbar" href="http://kshmakov.org">&copy; Kirill Shmakov</a>
-            </div>
-        </footer>
     </div>
 </div>

@@ -1,14 +1,39 @@
 {% extends "ide/projects/base.html" %}
 
 {% block navbar %}
-    <ul class="nav navbar-nav">
-        <li class="active"><a ng-click="navigate('{{ project.url }}')">{{ project.name }}</a></li>
-        <li><a ng-click="navigate('{{ settings_url }}')">Settings</a></li>
-    </ul>
+    <li class="active"><a ng-click="navigate('{{ project.url }}')">{{ project.name }}</a></li>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Hey there!</h1>
+    <div id="kitchen-wide-wrap" class="row">
+        <div id="kitchen-project-menu" class="col-md-2 bg-info">
+            <ul class="kitchen-menu-list">
+                <li>
+                    <a class="kitchen-menu-link">Summary</a>
+                </li>
+                <li>
+                    <a class="kitchen-menu-link">Computations</a>
+                    <ul class="kitchen-menu-sub-list">
+                        <li><a class="kitchen-menu-sub-link">Cras justo odio</a></li>
+                        <li><a class="kitchen-menu-sub-link">Dapibus ac facilisis in</a></li>
+                        <li><a class="kitchen-menu-sub-link">Morbi leo risus</a></li>
+                        <li><a class="kitchen-menu-sub-link">Porta ac consectetur ac</a></li>
+                        <li><a class="kitchen-menu-sub-link">Vestibulum at eros</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="kitchen-menu-link">Auxiliaries</a>
+                </li>
+                <li>
+                    <a class="kitchen-menu-link">Fusions</a>
+                </li>
+                <li>
+                    <a class="kitchen-menu-link">Objectives</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+
+        </div>
     </div>
 {% endblock %}

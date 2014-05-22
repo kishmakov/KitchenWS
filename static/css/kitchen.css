@@ -1,4 +1,4 @@
-html, body, .ng-scope, #wrap {
+html, body, .ng-scope {
     height: 100%;
 }
 
@@ -6,14 +6,22 @@ body {
     padding-top: 50px;
 }
 
-#kitchen-wrap {
+#kitchen-wrap-footer
+{
     height: 100%;
     margin: 0 0 -60px 0;
 }
 
-#kitchen-in-wrap {
+#kitchen-wrap, #kitchen-wide-wrap {
     height: 100%;
     margin: 0;
+}
+
+#kitchen-project-menu {
+    height: 100%;
+    border-width: 0 3px 0 0;
+    border-style: solid;
+    border-color: #222;
 }
 
 .error-message {
@@ -46,7 +54,7 @@ footer > div > a:hover {
     background: #3276b1;
 }
 
-.kitchen-old-project-item {
+.kitchen-project-item {
     height: 80px;
     padding-left: 10px;
     margin-top: 8px;
@@ -56,8 +64,35 @@ footer > div > a:hover {
     border-color: #eee;
 }
 
-.kitchen-old-project-item:hover {
+.kitchen-project-item:hover {
     background: #eee;
 }
+
+.kitchen-menu-list {
+    list-style-type: none;
+    padding: 20px 0 0 20px;
+    margin: 0;
+    line-height: 10px;
+}
+
+.kitchen-menu-link {
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 1.4;
+}
+
+.kitchen-menu-sub-list {
+    list-style-type: none;
+    padding: 10px 0 10px 20px;
+    margin: 0px;
+    line-height: 20px;
+}
+
+.kitchen-menu-sub-link {
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 1.4;
+}
+
 
 
