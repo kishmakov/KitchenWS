@@ -45,6 +45,9 @@ class ProjectComputation(models.Model):
         db_table = 'kitchen_project_computation'
         verbose_name = 'Project Computation'
 
+    def __str__(self):
+        return '{0}'.format(self.name)
+
 
 class ComputationObjective(models.Model):
     id = models.AutoField(primary_key=True)
@@ -57,4 +60,7 @@ class ComputationObjective(models.Model):
     class Meta:
         db_table = 'kitchen_computation_objective'
         verbose_name = 'Computation Objective'
+
+    def __str__(self):
+        return '{0}'.format(self.name)
 

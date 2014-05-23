@@ -33,15 +33,33 @@ def ide_project(request, project_id):
     dictionary = {
         'first_name': request.user.first_name,
         'last_name': request.user.last_name,
-        'project': {'id' : project_id }
+        'project': {'id' : project_id },
+        'computations': []
     }
 
-    project = request.user.project_title_set.filter(id__exact=project_id)[0]
-    dictionary['project']['name'] = shorten(project.project_name)
-    dictionary['project']['url'] = '/ide/projects/' + project_id + '/' + project.project_name + '/'
+    projects = request.user.project_title_set.filter(id__exact=project_id)
+    project = None
+    computations = []
+
+    if len(projects) > 0:
+        project = projects[0]
+        dictionary['project']['name'] = shorten(project.project_name)
+        dictionary['project']['url'] = '/ide/projects/' + project_id + '/' + project.project_name + '/'
+
+    if project is not None:
+        summary = project.project_summary_set.all()[0]
+        computations = project.project_computation_set.all()
+        dictionary['summary'] = summary.summary
+
+    for computation in computations:
+        dictionary['computations'].append({
+            'name': computation.name,
+            'id': computation.id
+        })
+
+
 
     print('project: id = {0}, name = {1}'.format(project_id, project.project_name))
-
 
     # projects = request.user.project_title_set.all()
     # parity = 1
