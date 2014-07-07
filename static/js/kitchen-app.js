@@ -75,6 +75,27 @@ angular.module('kitchen', [
         title: 'Kitchen IDE Legal',
         templateUrl: '/about/legal/'});
 
+    $routeProvider.when('/about/doc/:id/:docTitles/', {
+        controller: 'DocCtrl',
+        title: 'Kitchen Documentation',
+        resolve: {
+            projectName: function ($route, kitchenTitle) {
+                console.log('docTitle=' + $route.current.params.docTitle);
+                kitchenTitle.title = $route.current.params.docTitle || 'Unnamed';
+            }
+        },
+        redirectTo: function (params) {
+            return '/ide/projects/' + params.id + '/';
+        }
+    });
+
+    $routeProvider.when('/about/doc/:id/', {
+        controller: 'DocCtrl',
+        templateUrl: function (params) {
+            return '/about/doc/' + params.id + '/';
+        }
+    });
+
     $routeProvider.otherwise({redirectTo: '/login'});
 }])
 
