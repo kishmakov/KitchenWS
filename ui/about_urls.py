@@ -1,6 +1,8 @@
-from django.conf.urls import include, patterns, url
+from django.conf.urls import patterns, url
+
+from ui.about_views import about_doc, about_legal
 
 urlpatterns = patterns('',
-    url(r'^legal/$', include('ui.about_views.about_legal')),
-    url(r'^doc/(?P<num>\d+)/$', include('ui.about_views.about_doc')),
+    url(r'^legal/$', about_legal),
+    url(r'^doc/(?P<num>\d+)/$', about_doc),
 )

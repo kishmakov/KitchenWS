@@ -106,5 +106,12 @@ function ($scope, $location, $http, $rootScope) {
     $scope.newProjectFromVCS = function () {
         alert('New Project From VCS');
     };
+}])
+
+.controller('DocCtrl', ['$scope', '$location', '$http', '$rootScope',
+function ($scope, $location, $http, $rootScope) {
+
+    $scope.projectName = '456';
+
 }]);
 

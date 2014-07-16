@@ -85,7 +85,7 @@ angular.module('kitchen', [
             }
         },
         redirectTo: function (params) {
-            return '/ide/projects/' + params.id + '/';
+            return '/about/doc/' + params.id + '/';
         }
     });
 
