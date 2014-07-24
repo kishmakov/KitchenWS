@@ -96,7 +96,7 @@ angular.module('kitchen', [
         }
     });
 
-    $routeProvider.otherwise({redirectTo: '/login'});
+    $routeProvider.otherwise({redirectTo: '/ide/html/login/'});
 }])
 
 .run(['$location', '$rootScope', '$templateCache', 'kitchenTitle',

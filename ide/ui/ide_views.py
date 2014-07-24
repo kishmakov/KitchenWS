@@ -2,7 +2,6 @@ from django.template import RequestContext
 from django.template.loader import get_template
 from django.http import HttpResponse
 
-from kitchen.models import ProjectTitle
 
 def shorten(name):
     return name if len(name) <= 25 else name[:22] + '...'

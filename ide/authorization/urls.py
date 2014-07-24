@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from authorization import views
+from ide.authorization import views
 
 urlpatterns = patterns('',
     url(r'^login', views.authorization_login),

@@ -1,0 +1,17 @@
+<div {% block controller %}{% endblock %}>
+    <div id="header" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" ng-click="navigate('/')">IDE</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" ng-click="navigate('/doc/0/')">Doc</a>
+            </div>
+            {% block navbar %}{% endblock %}
+        </div>
+    </div>
+
+    {% block div-content %}{% endblock %}
+
+    {% block div-footer %}{% endblock %}
+</div>

@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, url
 
-from ui import login_views
+from ide.ui import login_views
+
 
 urlpatterns = patterns('',
     url(r'^$', login_views.login_welcome),

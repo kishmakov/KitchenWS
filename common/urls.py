@@ -8,10 +8,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'common.views.index'),
-    url(r'^ide/', include('ui.ide_urls')),
-    url(r'^about/', include('ui.about_urls')),
-    url(r'^login/', include('ui.login_urls')),
-    url(r'^authorization/', include('authorization.urls')),
-    url(r'^kitchen/$', include('kitchen.urls')),
+    url(r'^about/html/', include('about.html_urls')),
+    url(r'^ide/html/', include('ide.html_urls')),
+    url(r'^ide/json/', include('ide.json_urls')),
+    url(r'^doc/html/', include('doc.html_urls')),
     url(r'^admin/', include(admin.site.urls)),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
