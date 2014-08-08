@@ -1,9 +1,7 @@
 {% extends "base0.html" %}
 
-{% block controller %}ng-controller="DocCtrl"{% endblock %}
-
-{% block content %}
+{% block base0-content %}
 <div id="kitchen-wrap-footer">
-    Hi there!
+    {% block base1-content %}{% endblock %}
 </div>
 {% endblock %}

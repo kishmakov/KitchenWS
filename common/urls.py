@@ -8,9 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'common.views.index'),
-    url(r'^about/html/', include('about.html_urls')),
     url(r'^ide/html/', include('ide.html_urls')),
-    url(r'^ide/json/', include('ide.json_urls')),
     url(r'^doc/html/', include('doc.html_urls')),
     url(r'^admin/', include(admin.site.urls)),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

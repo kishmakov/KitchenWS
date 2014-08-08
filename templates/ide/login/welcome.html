@@ -1,6 +1,6 @@
-{% extends "ide/login/base.html" %}
+{% extends "ide/login/base2.html" %}
 
-{% block navbar %}
+{% block base0-navbar %}
     <div class="navbar-collapse collapse">
         <form class="navbar-form navbar-right" role="form">
             <div class="form-group">
@@ -16,8 +16,8 @@
     </div>
 {% endblock %}
 
-{% block content %}
-    <div id="kitchen-wrap" class="jumbotron">
+{% block base1-content %}
+    <div id="kitchen-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -25,8 +25,8 @@
                     <h2>Create and share your computational notes.</h2>
                     <br>
                 </div>
-                {% include "ide/login/registration.html" %}
             </div>
         </div>
     </div>
 {% endblock %}
+

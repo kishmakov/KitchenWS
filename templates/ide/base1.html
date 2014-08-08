@@ -1,6 +1,7 @@
-{% extends "ide/base0.html" %}
+{% extends "base0.html" %}
 
+{% block base0-content %}
 <div id="kitchen-wrap-footer">
-        {% block content %}
-        {% endblock content %}
-    </div>
+    {% block base1-content %}{% endblock %}
+</div>
+{% endblock %}
