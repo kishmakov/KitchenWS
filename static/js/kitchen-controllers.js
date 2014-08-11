@@ -2,7 +2,7 @@
 
 angular.module('kitchen.controllers', ['ngRoute'])
 
-.controller('LoginCtrl', ['$scope', '$location', '$http', '$rootScope',
+.controller('IDECtrl', ['$scope', '$location', '$http', '$rootScope',
 function ($scope, $location, $http, $rootScope) {
     $scope.authorization = {
         username: '',
@@ -18,17 +18,16 @@ function ($scope, $location, $http, $rootScope) {
         verification: ''
     };
 
-    $scope.autoRegistration = 'off';
-
-    $scope.firstName = $rootScope.firstName || '';
-    $scope.lastName = $rootScope.lastName || '';
-    $scope.loggedIn = $rootScope.loggedIn || false;
+//    $scope.autoRegistration = 'off';
+//
+//    $scope.firstName = $rootScope.firstName || '';
+//    $scope.lastName = $rootScope.lastName || '';
 
     function loginSucceed(data) {
         $rootScope.firstName = data['first_name'];
         $rootScope.lastName = data['last_name'];
         $rootScope.loggedIn = true;
-        $location.path('/ide/projects/');
+        $location.path('/ide/html/projects/');
     }
 
     function loginFailed(data, status) {
@@ -44,13 +43,13 @@ function ($scope, $location, $http, $rootScope) {
             return;
         }
 
-        $location.path('/login/');
+        $location.path('/ide/html/login_fail/');
     }
 
-    $scope.logIn = function () {
+    $scope.login = function () {
         var login = {
             method: 'post',
-            url: '/authorization/login/',
+            url: '/ide/json/login/',
             data: JSON.stringify($scope.authorization)
         };
 
@@ -58,7 +57,7 @@ function ($scope, $location, $http, $rootScope) {
     };
 
     $scope.signUp = function () {
-        $location.path('/authorization/signup/');
+        $location.path('/ide/html/signup/');
     };
 
     $scope.$on('$routeChangeSuccess', function () {
@@ -70,10 +69,6 @@ function ($scope, $location, $http, $rootScope) {
             loginSucceed(data);
         }
     });
-}])
-
-.controller('IDECtrl', ['$scope', '$location', '$http', '$rootScope',
-function ($scope, $location, $http, $rootScope) {
 
     $scope.projectName = '123';
 
@@ -106,6 +101,7 @@ function ($scope, $location, $http, $rootScope) {
     $scope.newProjectFromVCS = function () {
         alert('New Project From VCS');
     };
+
 }])
 
 .controller('DocCtrl', ['$scope', '$location', '$http', '$rootScope',

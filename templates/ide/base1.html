@@ -1,5 +1,9 @@
 {% extends "base0.html" %}
 
+{% block base0-controller %}
+ng-controller="IDECtrl"
+{% endblock %}
+
 {% block base0-navbar %}
 <ul class="nav navbar-nav">
     <li><a ng-click="navigate('/doc/html/')">Documentation</a></li>

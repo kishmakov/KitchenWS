@@ -1,4 +1,4 @@
-{% extends "ide/login/base2.html" %}
+{% extends "ide/outside/base2.html" %}
 
 {% block base1-navbar %}
     <div class="navbar-collapse collapse">
@@ -11,7 +11,7 @@
                 <input type="password" placeholder="Password" class="form-control"
                        ng-model="authorization.password">
             </div>
-            <button type="submit" class="btn btn-success" ng-click="logIn()">Log In</button>
+            <button type="submit" class="btn btn-success" ng-click="login()">Log In</button>
         </form>
     </div>
 {% endblock %}
