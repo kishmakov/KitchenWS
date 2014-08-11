@@ -2,33 +2,25 @@
 
 angular.module('kitchen.controllers', ['ngRoute'])
 
-.controller('IDECtrl', ['$scope', '$location', '$http', '$rootScope',
-function ($scope, $location, $http, $rootScope) {
-    $scope.authorization = {
+.controller('RootCtrl', ['$rootScope', '$location', '$http',
+function ($rootScope, $location, $http) {
+    $rootScope.loggedIn = false;
+
+    $rootScope.authorization = {
         username: '',
         password: ''
     };
 
-    $scope.registration = {
-        firstName: '',
-        lastName: '',
-        username: '',
-        email: '',
-        password: '',
-        verification: ''
+    $rootScope.navigate = function(destanation) {
+        $location.path(destanation);
     };
-
-//    $scope.autoRegistration = 'off';
-//
-//    $scope.firstName = $rootScope.firstName || '';
-//    $scope.lastName = $rootScope.lastName || '';
 
     /* login */
 
     function loginSucceed(data) {
+        $rootScope.loggedIn = true;
         $rootScope.firstName = data['first_name'];
         $rootScope.lastName = data['last_name'];
-        $rootScope.loggedIn = true;
         $location.path('/ide/html/projects/');
     }
 
@@ -36,23 +28,23 @@ function ($scope, $location, $http, $rootScope) {
         $rootScope.loggedIn = false;
 
         if (status == '401') {
-            $location.path('/login/again/');
+            $location.path('/ide/html/login/again/');
             return;
         } else if (status == '420') {
             $rootScope.firstName = data['first_name'];
             $rootScope.lastName = data['last_name'];
-            $location.path('/login/wait/');
+            $location.path('/ide/html/login/wait/');
             return;
         }
 
-        $location.path('/ide/html/login_fail/');
+        $location.path('/ide/html/login/fail/');
     }
 
-    $scope.login = function () {
+    $rootScope.login = function () {
         var load = {
             method: 'post',
             url: '/ide/json/login/',
-            data: JSON.stringify($scope.authorization)
+            data: JSON.stringify($rootScope.authorization)
         };
 
         $http(load).success(loginSucceed).error(loginFailed);
@@ -65,7 +57,10 @@ function ($scope, $location, $http, $rootScope) {
         $location.path('/ide/html/welcome/');
     }
 
-    $scope.logout = function () {
+    $rootScope.logout = function () {
+        if (!$rootScope.loggedIn)
+            return;
+
         var load = {
             method: 'post',
             url: '/ide/json/logout/'
@@ -73,10 +68,22 @@ function ($scope, $location, $http, $rootScope) {
 
         $http(load).success(logoutSucceed).error(function () {});
     };
+}])
 
+.controller('IDECtrl', ['$scope', '$location', '$rootScope',
+function ($scope, $location, $rootScope) {
+//    $scope.autoRegistration = 'off';
+//
+//    $scope.firstName = $rootScope.firstName || '';
+//    $scope.lastName = $rootScope.lastName || '';
 
-    $scope.signUp = function () {
-        $location.path('/ide/html/signup/');
+    $scope.registration = {
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        password: '',
+        verification: ''
     };
 
     $scope.$on('$routeChangeSuccess', function () {
@@ -102,13 +109,10 @@ function ($scope, $location, $http, $rootScope) {
     $scope.newProjectFromVCS = function () {
         alert('New Project From VCS');
     };
-
 }])
 
 .controller('DocCtrl', ['$scope', '$location', '$http', '$rootScope',
 function ($scope, $location, $http, $rootScope) {
-
     $scope.projectName = '456';
-
 }]);
 

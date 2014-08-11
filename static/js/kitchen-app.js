@@ -131,10 +131,6 @@ angular.module('kitchen', [
         $rootScope.$on('$viewContentLoaded', function() {
             $templateCache.removeAll();
         });
-
-        $rootScope.navigate = function(destanation) {
-            $location.path(destanation);
-        }
     }
 ]);
 
