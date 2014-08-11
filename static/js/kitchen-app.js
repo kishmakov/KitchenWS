@@ -89,12 +89,7 @@ angular.module('kitchen', [
 
     $routeProvider.when('/doc/html/', {
         controller: 'DocCtrl',
-        templateUrl: '/doc/html/',
-        resolve: {
-            title: function (kitchenTitle) {
-                kitchenTitle.title = 'Documentation on Kitchen';
-            }
-        }
+        templateUrl: '/doc/html/'
     });
 
     $routeProvider.when('/ide/html/login/', {
@@ -107,13 +102,16 @@ angular.module('kitchen', [
 
 .run(['$location', '$rootScope', '$templateCache', '$http',
     function($location, $rootScope, $templateCache, $http) {
-        $rootScope.$on('$routeChangeSuccess', function (event) {
+
+        $rootScope.$on('$locationChangeStart', function(scope, next, current) {
+            if (current && current == next)
+                return;
+
+            var defaultTitle = 'The Kitchen';
             var request = {
                 method: 'post',
                 url: $location.url().replace('html', 'json') + 'header/'
             };
-
-            var defaultTitle = 'The Kitchen';
 
             $http(request).success(function (data) {
                 $rootScope.title = data.title || defaultTitle;
