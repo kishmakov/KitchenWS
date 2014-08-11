@@ -23,6 +23,8 @@ function ($scope, $location, $http, $rootScope) {
 //    $scope.firstName = $rootScope.firstName || '';
 //    $scope.lastName = $rootScope.lastName || '';
 
+    /* login */
+
     function loginSucceed(data) {
         $rootScope.firstName = data['first_name'];
         $rootScope.lastName = data['last_name'];
@@ -47,14 +49,31 @@ function ($scope, $location, $http, $rootScope) {
     }
 
     $scope.login = function () {
-        var login = {
+        var load = {
             method: 'post',
             url: '/ide/json/login/',
             data: JSON.stringify($scope.authorization)
         };
 
-        $http(login).success(loginSucceed).error(loginFailed);
+        $http(load).success(loginSucceed).error(loginFailed);
     };
+
+    /* logout */
+
+    function logoutSucceed() {
+        $rootScope.loggedIn = false;
+        $location.path('/ide/html/welcome/');
+    }
+
+    $scope.logout = function () {
+        var load = {
+            method: 'post',
+            url: '/ide/json/logout/'
+        };
+
+        $http(load).success(logoutSucceed).error(function () {});
+    };
+
 
     $scope.signUp = function () {
         $location.path('/ide/html/signup/');
@@ -71,24 +90,6 @@ function ($scope, $location, $http, $rootScope) {
     });
 
     $scope.projectName = '123';
-
-    function logoutSucceed() {
-        $rootScope.loggedIn = false;
-        $location.path('/login/');
-    }
-
-    function logoutFailed() {
-    }
-
-    $scope.logOut = function () {
-        var logout = {
-            method: 'post',
-            url: '/authorization/logout/',
-            data: ''
-        };
-
-        $http(logout).success(logoutSucceed).error(logoutFailed);
-    };
 
     $scope.newProject = function () {
         alert('New Project');
