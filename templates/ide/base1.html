@@ -1,5 +1,13 @@
 {% extends "base0.html" %}
 
+{% block base0-navbar %}
+<ul class="nav navbar-nav">
+    <li><a ng-click="navigate('/doc/html/')">Documentation</a></li>
+</ul>
+{% block base1-navbar %}{% endblock %}
+{% endblock %}
+
+
 {% block base0-content %}
 <div id="kitchen-wrap-footer">
     {% block base1-content %}{% endblock %}

@@ -87,23 +87,39 @@ angular.module('kitchen', [
         }
     });
 
-    $routeProvider.when('/ide/html/login/', {
-        controller: 'LoginCtrl',
+    $routeProvider.when('/doc/html/', {
+        controller: 'DocCtrl',
+        templateUrl: '/doc/html/',
         resolve: {
             title: function (kitchenTitle) {
-                kitchenTitle.title = 'Login to Kitchen IDE';
+                kitchenTitle.title = 'Documentation on Kitchen';
             }
-        },
+        }
+    });
+
+    $routeProvider.when('/ide/html/login/', {
+        controller: 'LoginCtrl',
         templateUrl: '/ide/html/login/'
     });
 
     $routeProvider.otherwise({redirectTo: '/ide/html/login/'});
 }])
 
-.run(['$location', '$rootScope', '$templateCache', 'kitchenTitle',
-    function($location, $rootScope, $templateCache, kitchenTitle) {
+.run(['$location', '$rootScope', '$templateCache', '$http',
+    function($location, $rootScope, $templateCache, $http) {
         $rootScope.$on('$routeChangeSuccess', function (event) {
-            $rootScope.title = kitchenTitle.title;
+            var request = {
+                method: 'post',
+                url: $location.url().replace('html', 'json') + 'header/'
+            };
+
+            var defaultTitle = 'The Kitchen';
+
+            $http(request).success(function (data) {
+                $rootScope.title = data.title || defaultTitle;
+            }).error(function () {
+                $rootScope.title = defaultTitle;
+            });
         });
 
         $rootScope.$on('$viewContentLoaded', function() {
