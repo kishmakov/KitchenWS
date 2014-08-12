@@ -1,0 +1,38 @@
+<div class="container-fluid kitchen-short">
+    <div class="col-md-2">
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a ng-click="navigate('/doc/html/')" class="lead">Overview</a>
+            </div>
+            <table class="table">
+                <tr>
+                    <td><a ng-click="navigate('/doc/html/sections/0/')">
+                        Symbols and Modularization
+                    </a></td>
+                </tr>
+                <tr>
+                    <td><a ng-click="navigate('/doc/html/sections/1/')">
+                        Iteration and Recursion
+                    </a></td>
+                </tr>
+                 <tr>
+                    <td><a ng-click="navigate('/doc/html/sections/2/')">
+                        Type System
+                    </a></td>
+                </tr>
+                <tr>
+                    <td><a ng-click="navigate('/doc/html/sections/3/')">
+                        Inheritance Explained
+                    </a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-8 starter-template kitchen-scrollable">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+

@@ -94,5 +94,18 @@ footer > div > a:hover {
   line-height: 1.4;
 }
 
+.kitchen-doc-img {
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+}
 
+.kitchen-scrollable {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.kitchen-short {
+    padding-bottom: 60px;
+}
 

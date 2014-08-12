@@ -1,17 +1,70 @@
-{% extends "base0.html" %}
+{% extends "doc/base.html" %}
 
-{% block base0-content %}
-    <div id="kitchen-wrap">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <br>
-                    <h2>Documentation.</h2>
-                    <br>
-                </div>
+{% block content %}
+<div class="row">
+    <h1 class="text-center">Kitchen Computational Platform</h1>
+    <hr>
+</div>
 
-            </div>
-        </div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>What is Kitchen?</h2>
+
+        <br>
+
+        <p>
+            Kitchen is a computational platform designed for convenient modularization
+            of computational algorithms. Computational algorithm entity is a main object
+            of interest within system.
+        </p>
+
+        <p>
+            Kitchen platform is designed with the number of fundamental aspects being
+            addressed. These are:
+        </p>
+
+        <ul>
+            <li>transparency of module interfaces for reusability</li>
+            <li>integrated test-oriented assembly mechanism</li>
+            <li>organic target functions support</li>
+        </ul>
     </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Kitchen Structure</h2>
+
+        <br>
+
+        <p>
+            Kitchen consists of
+        </p>
+
+        <ul>
+            <li>KitchenScript language</li>
+            <li>documentation system</li>
+            <li>assembly control system</li>
+        </ul>
+
+        <p>
+            KitchenScript is&nbsp;statically-typed programming language which could be&nbsp;compiled
+            into a&nbsp;number of&nbsp;platforms, including JavaScript. When compiled to&nbsp;JavaScript,
+            KitchenScript modules turned into a&nbsp;building blocks for computational algorithm assembly.
+        </p>
+
+        <p>
+            During the assembly process components are compulsory verified for type correspondence
+            and optionally pre-tested before joining together. Pre-testing is&nbsp;aimed to&nbsp;diminish
+            probability of&nbsp;erroneous misusage of&nbsp;the component functionality.
+        </p>
+
+        <p>
+            Once assembly process is&nbsp;finished, resulted modularized algorithm would possess
+            embedded documentation. This documentation structure is&nbsp;a&nbsp;reflection
+            of&nbsp;modular structure of&nbsp;the algorithm.
+        </p>
+    </div>
+</div>
 {% endblock %}
 

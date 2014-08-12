@@ -84,10 +84,10 @@ function($routeProvider, $httpProvider) {
 //        }
 //    });
 
-    $routeProvider.when('/doc/html/:id/', {
+    $routeProvider.when('/doc/html/sections/:id/', {
         controller: 'DocCtrl',
         templateUrl: function (params) {
-            return '/doc/html/' + params.id + '/';
+            return '/doc/html/sections/' + params.id + '/';
         }
     });
 
@@ -135,6 +135,9 @@ function($routeProvider, $httpProvider) {
 
             $http(request).success(function (data) {
                 $rootScope.title = data.title || defaultTitle;
+                if ('hasMathJax' in data)
+                    $rootScope.hasMathJax = data.hasMathJax;
+
             }).error(function () {
                 $rootScope.title = defaultTitle;
             });
@@ -142,6 +145,7 @@ function($routeProvider, $httpProvider) {
 
         $rootScope.$on('$viewContentLoaded', function() {
             $templateCache.removeAll();
+            $rootScope.reloadMathJax();
         });
     }
 ]);

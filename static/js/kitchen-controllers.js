@@ -5,6 +5,7 @@ angular.module('kitchen.controllers', ['ngRoute'])
 .controller('RootCtrl', ['$rootScope', '$location', '$http',
 function ($rootScope, $location, $http) {
     $rootScope.loggedIn = false;
+    $rootScope.hasMathJax = false;
 
     $rootScope.authorization = {
         username: '',
@@ -19,9 +20,10 @@ function ($rootScope, $location, $http) {
     };
 
     $rootScope.navigate = function(destanation, section) {
-        for (var key in $rootScope.state) {
-            $rootScope.state[key] = '';
-        }
+        if (section != null)
+            for (var key in $rootScope.state) {
+                $rootScope.state[key] = '';
+            }
 
         if (section in $rootScope.state)
             $rootScope.state[section] = 'active';
@@ -35,7 +37,7 @@ function ($rootScope, $location, $http) {
         $rootScope.loggedIn = true;
         $rootScope.firstName = data['first_name'];
         $rootScope.lastName = data['last_name'];
-        $location.path('/ide/html/projects/');
+        $rootScope.navigate('/ide/html/projects/', 'projects');
     }
 
     function loginFailed(data, status) {
@@ -68,7 +70,7 @@ function ($rootScope, $location, $http) {
 
     function logoutSucceed() {
         $rootScope.loggedIn = false;
-        $location.path('/ide/html/welcome/');
+        $rootScope.navigate('/ide/html/welcome/', '');
     }
 
     $rootScope.logout = function () {
@@ -81,6 +83,23 @@ function ($rootScope, $location, $http) {
         };
 
         $http(load).success(logoutSucceed).error(function () {});
+    };
+
+    /* mathjax */
+
+    MathJax.Hub.Config({
+        extensions: ['tex2jax.js','TeX/noErrors.js','TeX/AMSsymbols.js'],
+        jax: ['input/TeX','output/HTML-CSS'],
+        tex2jax: {
+            inlineMath: [['$','$'],['\\(','\\)']],
+            displayMath: [['\\[','\\]'], ['$$','$$']]
+        },
+        'HTML-CSS': {availableFonts:['TeX']}
+    });
+
+    $rootScope.reloadMathJax = function() {
+        if ($rootScope.hasMathJax)
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'kitchen-wrap-footer']);
     };
 }])
 
