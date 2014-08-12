@@ -13,20 +13,21 @@
         <div id="header" class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="header">
-                    <a class="navbar-brand" ng-click="navigate('/ide/html/welcome/')">&nbsp;Kitchen IDE&nbsp;</a>
+                    <a class="navbar-brand" ng-click="navigate('/ide/html/')">&nbsp;Kitchen IDE&nbsp;</a>
                 </div>
+                {% verbatim %}
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a ng-click="navigate('/doc/html/')">Documentation</a>
+                    <li class="{{state.docs}}">
+                        <a ng-click="navigate('/doc/html/', 'docs')">Documentation</a>
                     </li>
-                    <li ng-show="loggedIn">
-                        <a ng-click="navigate('/ide/html/settings/')">Settings</a>
+                    <li class="{{state.settings}}" ng-show="loggedIn">
+                        <a ng-click="navigate('/ide/html/settings/', 'settings')">Settings</a>
                     </li>
-                    <li ng-show="loggedIn">
-                        <a ng-click="navigate('/ide/html/projects/')">Projects</a>
+                    <li class="{{state.projects}}" ng-show="loggedIn">
+                        <a ng-click="navigate('/ide/html/projects/', 'projects')">Projects</a>
                     </li>
                 </ul>
-
+                {% endverbatim %}
                 <div class="collapse navbar-collapse" ng-switch="loggedIn">
                     <button ng-switch-when="true" type="button" class="btn btn-primary navbar-btn pull-right" ng-click="logout()">
                         Log Out
@@ -46,7 +47,18 @@
             </div>
         </div>
 
-        <div ng-view></div>
+        <div id="kitchen-wrap-footer">
+            <div ng-view></div>
+        </div>
+
+        <footer id="footer" class="row navbar-default text-center">
+            <div class="col-md-2 col-md-offset-2 col-xs-6">
+                <a class="navbar" ng-click="navigate('/about/html/terms/', 'about')">Terms of Use</a>
+            </div>
+            <div class="col-md-2 col-md-offset-4 col-xs-6">
+                <a class="navbar" href="http://kshmakov.org">&copy; Kirill Shmakov</a>
+            </div>
+        </footer>
     </div>
 
   	<script src="{% static "js/angular.js" %}"></script>

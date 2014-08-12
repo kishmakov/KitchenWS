@@ -6,7 +6,8 @@ angular.module('kitchen', [
     'kitchen.controllers',
     'kitchen.services'])
 
-.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
+.config(['$routeProvider', '$httpProvider',
+function($routeProvider, $httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
@@ -90,14 +91,14 @@ angular.module('kitchen', [
         }
     });
 
+    $routeProvider.when('/about/html/terms/', {
+        controller: 'DocCtrl',
+        templateUrl: '/about/html/terms/'
+    });
+
     $routeProvider.when('/doc/html/', {
         controller: 'DocCtrl',
         templateUrl: '/doc/html/'
-    });
-
-    $routeProvider.when('/ide/html/welcome/', {
-        controller: 'IDECtrl',
-        templateUrl: '/ide/html/welcome/'
     });
 
     $routeProvider.when('/ide/html/projects/', {
@@ -105,7 +106,18 @@ angular.module('kitchen', [
         templateUrl: '/ide/html/projects/'
     });
 
-    $routeProvider.otherwise({redirectTo: '/ide/html/welcome/'});
+    $routeProvider.when('/ide/html/welcome/', {
+        controller: 'IDECtrl',
+        templateUrl: '/ide/html/welcome/'
+    });
+
+    $routeProvider.otherwise({
+        redirectTo: function ($rootScope) {
+            return $rootScope.loggedIn
+                ? '/ide/html/projects/'
+                : '/ide/html/welcome/';
+        }
+    });
 }])
 
 .run(['$location', '$rootScope', '$templateCache', '$http',

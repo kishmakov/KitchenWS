@@ -11,7 +11,21 @@ function ($rootScope, $location, $http) {
         password: ''
     };
 
-    $rootScope.navigate = function(destanation) {
+    $rootScope.state = {
+        'docs': '',
+        'settings': '',
+        'projects': '',
+        'about': ''
+    };
+
+    $rootScope.navigate = function(destanation, section) {
+        for (var key in $rootScope.state) {
+            $rootScope.state[key] = '';
+        }
+
+        if (section in $rootScope.state)
+            $rootScope.state[section] = 'active';
+
         $location.path(destanation);
     };
 
