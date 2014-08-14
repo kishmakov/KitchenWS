@@ -111,6 +111,16 @@ function($routeProvider, $httpProvider) {
         templateUrl: '/ide/html/welcome/'
     });
 
+    $routeProvider.when('/ide/html/login/wait/', {
+        controller: 'IDECtrl',
+        templateUrl: '/ide/html/login/wait/'
+    });
+
+    $routeProvider.when('/ide/html/login/again/', {
+        controller: 'IDECtrl',
+        templateUrl: '/ide/html/login/again/'
+    });
+
     $routeProvider.otherwise({
         redirectTo: function ($rootScope) {
             return $rootScope.loggedIn
