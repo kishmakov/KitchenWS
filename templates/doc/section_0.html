@@ -1,5 +1,7 @@
 {% extends "doc/base.html" %}
 
+{% load staticfiles %}
+
 {% block content %}
 <div class="row">
     <h1 class="text-center">Symbols and Modularization</h1>
@@ -43,7 +45,7 @@
             to the top. See figure below.
         </p>
         <br>
-        <img src="https://raw.githubusercontent.com/kishmakov/Kitchen/master/doc/images/symbols_together.png"
+        <img src="{% static "images/symbols_together.png" %}"
              alt="Symbol: Input -- Output -- Complete" class="kitchen-doc-img">
         <br>
         <p>
@@ -64,7 +66,7 @@
             is presented below.
         </p>
         <br>
-        <img src="https://raw.githubusercontent.com/kishmakov/Kitchen/master/doc/images/quadratic_equation_simple.png"
+        <img src="{% static "images/quadratic_equation_simple.png" %}"
              alt="Simple Quadratic Equation" class="kitchen-doc-img">
         <br>
         <p>
@@ -102,7 +104,7 @@
             Let us consider another modularization of quadratic equation solution.
         </p>
         <br>
-        <img src="https://raw.githubusercontent.com/kishmakov/Kitchen/master/doc/images/quadratic_equation_modularized.png"
+        <img src="{% static "images/quadratic_equation_modularized.png" %}"
              alt="Modularized Quadratic Equation" class="kitchen-doc-img">
         <br>
         <p>
@@ -123,7 +125,7 @@
             Another modularization is presented below as well.
         </p>
         <br>
-        <img src="https://raw.githubusercontent.com/kishmakov/Kitchen/master/doc/images/quadratic_equation_last.png"
+        <img src="{% static "images/quadratic_equation_last.png" %}"
              alt="Another Modularization of Quadratic Equation" class="kitchen-doc-img">
         <br>
         <p>
