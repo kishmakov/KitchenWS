@@ -4,15 +4,37 @@
 
 {% block content %}
 <div class="row">
-    <h1 class="text-center">Iteration and Recursion</h1>
+    <h1 class="text-center">Computation Structure</h1>
     <hr>
 </div>
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <br>
-        <img src="{% static "images/iterative_sum.png" %}"
-             alt="Iterative Sum" class="kitchen-doc-img">
+        <p>
+            Kitchen is a platform for building computational algorithms. Computational
+            algorithms vary in their size. While "small" algorithm could be treated
+            as a whole both as an idea and as a computer representation, "big"
+            algorithms are different. Standard approach to this problem is a
+            modularization of "big" algorithms at the level of idea and in its
+            computer representation.
+        </p>
+        <br>
+        <p>
+            Cornerstone of the Kitchen modularization system is the notion of the <b>symbol</b>.
+            Philosophically speaking symbol is everything which could be expressed, used
+            in expressions and defined. Expressions are aimed to define one symbol via
+            another symbols by means of algorithmic terms.
+        </p>
+        <br>
+        <p>
+            Symbols are consumables of computation in the sense that once computation started,
+            symbols are consequently get defined into numeric values. In a metaphoric way,
+            you could think symbols like a pipes. These pipes are supposed to be filled with
+            "definiteness" flow. When you define symbol, say A, via expression containing other
+            symbols, say B and C, you connect the input of A-pipe to the output of B- and C-pipes.
+        </p>
+        <br>
     </div>
 </div>
 {% endblock %}

@@ -1,0 +1,97 @@
+{% extends "doc/base.html" %}
+
+{% block content %}
+<div class="row">
+    <h1 class="text-center">Kitchen Types Representation</h1>
+    <hr>
+</div>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Primitive Types and Lists</h2>
+        <br>
+        <p>
+            There are number of primitive types in Kitchen Script.
+            We use this types to initiate the process of type construction. Those are:
+        </p>
+        <br>
+        <ul>
+            <li>Boolean</li>
+            <li>Integer</li>
+            <li>Double</li>
+        </ul>
+        <br>
+        <p>
+            With every type <i>T</i> we have an list of this type denoted as <i>[T]</i>.
+        </p>
+        <br>
+
+        <h2>Plain Objects</h2>
+        <br>
+        <p>
+            Plain objects are constructed as JSON objects with <i>type</i> value equal <i>PO</i>.
+            Object member names are all other keys of the describing JSON objects.
+            Corresponding values are type description of the members.
+        </p>
+        <br>
+        <p>
+            For instance, object for geographic point could be represented as
+        </p>
+        <br>
+        <pre>
+{
+  ...
+  "GeographicPoint": {
+    "type" : "PO",
+    "longitude": "Double",
+    "latitude": "Double"
+  },
+  ...
+}</pre>
+        <br>
+        <p>
+            We could use already defined types as well.
+        </p>
+        <br>
+        <pre>
+{
+  ...
+  "Country": {
+    "type": "PO",
+    "area": "Double",
+    "population": "Integer",
+    "cities": ["GeographicPoint"],
+    "christiansDiscriminated": "Boolean"
+  },
+  ...
+}</pre>
+        <br>
+
+        <h2>Functions</h2>
+        <br>
+        <p>
+            Functions are represented as JSON objects with <i>type</i> value equal <i>F</i>.
+        </p>
+        <br>
+        <p>
+            For instance, if we want to describe a type for function which returns a list
+            of cities of given country which are within specified distance from specified
+            point, it could be represented as
+        </p>
+        <br>
+        <pre>
+{
+  ...
+  "NeighbourhoodCities": {
+    "type": "F",
+    "result": ["GeographicPoint"],
+    "0": "Country",
+    "1": "Double",
+    "2": "GeographicPoint"
+  },
+  ...
+}</pre>
+    </div>
+</div>
+{% endblock %}
+
