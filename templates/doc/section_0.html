@@ -21,16 +21,27 @@
         <img src="{% static "images/computational_element_00.png" %}"
              alt="Computational Element Intro" class="kitchen-doc-img">
         <p>
-            Computational element consists of inputs (golden) and output (purple). While some
-            of its inputs are undefined, it represents some potential computation which could
-            be triggered by providing values into the remaining undefined inputs.
-            See <i>a:</i> of the picture below. Once all of its inputs are defined,
-            computational element is activated. During activation phase it computes values
-            of its outputs. When the computation is finished, all outputs are defined. See
-            <i>b:</i> of the picture below.
+            Computational element consists of inputs (golden) and outputs (purple).
+            While some of its inputs are undefined, it represents some potential
+            computation which could be triggered by providing values into the remaining
+            undefined inputs. See <i>a</i> of the picture below. Once all of its
+            inputs are defined, computational element is activated. When the computation
+            is finished, all outputs are defined. See <i>b</i> of the picture below.
         </p>
         <img src="{% static "images/computational_element_01.png" %}"
              alt="Computational Element States" class="kitchen-doc-img">
+        <p>
+            Computation elements vary in sizes. Smallest elements correspond to machine
+            instructions. They are built in the Kitchen and their execution is performed
+            by means of underlying machine. Two examples are provided at the picture below.
+            First example (<i>a</i>) is one of the smallest elements possible. It
+            is simple summation of its two inputs. Second example (<i>b</i>) is an element
+            which accepts array as its first input and index as its second input and
+            returns array element at given index.
+        </p>
+        <img src="{% static "images/computational_element_02.png" %}"
+             alt="Computational Element States" class="kitchen-doc-img">
+
         <p>
             Kitchen is a platform for building computational algorithms. Computational
             algorithms vary in their size. While "small" algorithm could be treated
