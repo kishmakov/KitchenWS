@@ -10,7 +10,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <br>
+        <h3>Atomic Elements</h3>
         <p>
             Computational element is an ideological cornerstone of the Kitchen platform.
             From the mathematical point of view, computational element is just a function
@@ -22,16 +22,18 @@
              alt="Computational Element Intro" class="kitchen-doc-img">
         <p>
             Computational element consists of inputs (golden) and outputs (purple).
-            While some of its inputs are undefined, it represents some potential
-            computation which could be triggered by providing values into the remaining
-            undefined inputs. See <i>a</i> of the picture below. Once all of its
-            inputs are defined, computational element is activated. When the computation
-            is finished, all outputs are defined. See <i>b</i> of the picture below.
+            Both inputs and outputs could be defined or undefined. We distinguish defined
+            items by designating them "being filled with water", as shown at the picture
+            below. While at least one of the inputs of an element is undefined, element
+            represents some potential computation which could be triggered by providing
+            values into the remaining undefined inputs (<i>a</i>). Once all of the inputs
+            are defined, element is activated and computation starts. When the computation
+            is finished, defined values are provided for all of element's outputs (<i>b</i>).
         </p>
         <img src="{% static "images/computational_element_01.png" %}"
              alt="Computational Element States" class="kitchen-doc-img">
         <p>
-            Computation elements vary in sizes. Smallest elements correspond to machine
+            Computation elements vary in size. Smallest elements correspond to machine
             instructions. They are built in the Kitchen and their execution is performed
             by means of underlying machine. Two examples are provided at the picture below.
             First example (<i>a</i>) is one of the smallest elements possible. It
@@ -40,7 +42,64 @@
             returns array element at given index.
         </p>
         <img src="{% static "images/computational_element_02.png" %}"
-             alt="Computational Element States" class="kitchen-doc-img">
+             alt="Atomic Element Examples" class="kitchen-doc-img">
+        <p>
+            Big computational elements outsize logical building blocks of underlying machine.
+            Such elements require decomposition in order to be handled by the Kitchen system.
+        </p>
+        <h3>Composed Elements</h3>
+        <p>
+            We would like to choose a decomposition of the computational element based on
+            the philosophical point of view on the subject. According to this point of view
+            element's essence is enclosed in the "potentiality" represented by it. For
+            instances, consider a computational element which solves quadratic equation.
+            Our first and most rough idea about it would be nearly as follows.
+        </p>
+        <img src="{% static "images/computational_element_03.png" %}"
+             alt="Quadratic Equation Solver No Clue" class="kitchen-doc-img">
+        <p>
+            The equation itself is not something we are interested in, but the solution of
+            the equation. In order to clarify what we mean by solution we need to take into
+            account the setting in which equation arise. Let us additionally assume that this
+            equation implied by following simple physics problem.
+        </p>
+        <blockquote>Boy throws a stone from atop of the tree and is interested in time when
+            the stone would land on the ground.
+        </blockquote>
+        <p>
+            Provided such a setting, we could deduce two additional assumption about solution
+            of the derived equation. First assumption is that equation is not degenerate,
+            because leading coefficient is proportional to the <rus>тяготение</rus> constant.
+            Therefore three coefficients define our equation. Second assumption is that equation
+            would always have only real roots. This considerations excludes necessity of handling
+            complex roots and branching on degeneracy of the equation. As a result we could specify
+            our element's inputs and output as follows.
+        </p>
+        <img src="{% static "images/computational_element_04.png" %}"
+             alt="Quadratic Equation Solver Outputs Specified" class="kitchen-doc-img">
+        <p>
+
+        </p>
+        <p>
+            In order to represent computational element as Prior to start decomposition
+            Big computational elements outsize logical building blocks of underlying machine
+            and therefore should be "decomposed". First step of decomposition is the
+            encapsulation of exterior perception of an element. In order to do this we
+            recall philosophical point of view of the computational element.
+        </p>
+        <p>
+            The "potentiality" which is enclosed inside element is the understanding of
+            element outcome. It means that we now type of each element's output. By understanding we mean that we exactly know type of the result. The "definiteness", which should be injected into element,
+            comes in through
+            travels through
+
+            While there is no "definiteness", element provides some "potentiality". This
+            mean that we know,        what we need to provide and what we would get as the result.
+        </p>
+
+        <p>
+            Let us consider computational element which solves quadratic equation.
+        </p>
 
         <p>
             Kitchen is a platform for building computational algorithms. Computational
