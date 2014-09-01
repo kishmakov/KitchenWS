@@ -67,21 +67,42 @@
             the stone would land on the ground.
         </blockquote>
         <p>
-            Provided such a setting, we could deduce two additional assumption about solution
-            of the derived equation. First assumption is that equation is not degenerate,
+            Provided such a setting, we could deduce two additional assumptions about solution
+            of derived equation. First assumption is that the equation is not degenerate,
             because leading coefficient is proportional to the $g$ (strength of Earth's
             gravitational field). Therefore three coefficients define our equation. Second
-            assumption is that equation would always have only real roots. This considerations
+            assumption is that the equation would always have only real roots. This considerations
             excludes necessity of handling complex roots and branching on degeneracy of the
             equation. As a result we could specify our element's inputs and output as follows.
         </p>
         <img src="{% static "images/computational_element_04.png" %}"
              alt="Quadratic Equation Solver Interface Specified" class="kitchen-doc-img">
         <p>
-            Thats it.
+            Under indicated assumptions computational flow always travels the same way. We could
+            construct an instance of quadratic equation solver from atomic elements as follows.
         </p>
         <img src="{% static "images/computational_element_05.png" %}"
              alt="Quadratic Equation Solver Example" class="kitchen-doc-img">
+        <p>
+            Figuratively speaking, atomic elements act as a rails along which definiteness travels
+            in the presented scheme. Possibility to construct such a scheme in advance is
+            conditioned by the absence of branching in solver. Since the majority of the computations
+            doesn't share this property we need to generalise this decomposition to the branching
+            computations.
+        </p>
+        <p>
+            Let us consider possibilities of first steps of the definiteness spread in the presented
+            scheme. There can be two of them, depicted below.
+        </p>
+        <img src="{% static "images/computational_element_06.png" %}"
+             alt="Definiteness Spread Start" class="kitchen-doc-img">
+        <p>
+            These two steps can be applied independently of values of output. In general situation
+            is different: set of currently applicable steps is a subset of all potentially applicable
+            steps for provided configuration of outputs. This subset depends on values of outputs.
+            This is especially clear for conditional branching.
+        </p>
+
 
     </div>
 </div>
