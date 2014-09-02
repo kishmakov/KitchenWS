@@ -91,19 +91,46 @@
             computations.
         </p>
         <p>
-            Let us consider possibilities of first steps of the definiteness spread in the presented
-            scheme. There can be two of them, depicted below.
+            Let us consider possibilities of first steps of the definiteness spread in the
+            presented scheme. There are two of them, depicted below. Each step corresponds
+            to the application of some other computational element.
         </p>
         <img src="{% static "images/computational_element_06.png" %}"
              alt="Definiteness Spread Start" class="kitchen-doc-img">
         <p>
-            These two steps can be applied independently of values of output. In general situation
-            is different: set of currently applicable steps is a subset of all potentially applicable
-            steps for provided configuration of outputs. This subset depends on values of outputs.
-            This is especially clear for conditional branching.
+            These two elements can be applied independently of values of output. In general
+            situation is different: set of currently applicable elements is a subset of all
+            potentially applicable elements for provided configuration of outputs. This subset
+            depends on values of outputs. This is especially clear for conditional branching.
         </p>
-
-
+        <p>
+            Application of element changes the set of defined frontier outputs. This in turn
+            brings us to a new sets of potentially and currently applicable elements. If we
+            encapsulate all these observations we would end up with the notion of the <b>state</b>.
+            Essentially state corresponds to the execution state of the program. More rigorously,
+            state consists of
+        </p>
+        <ul>
+            <li>fixed set of defined frontier outputs $O$</li>
+            <li>fixed set of potentially applicable computational elements $E$</li>
+            <li>possible assignments of values of outputs; such assignments could be
+                represented as a functions $O \to V$ where $V$ is the set of all possible
+                values</li>
+            <li>rule to determine subset of currently applicable computational elements
+                by current outputs values: $c: \left(O \to V\right) \to 2^E$
+            </li>
+        </ul>
+        <p>
+            Globally computational element consists of finite number of states.
+            These states constitute a <a href="http://en.wikipedia.org/wiki/Finite-state_machine">
+            finite state machine</a>. Transitions between states correspond to the applications
+            of computational elements. How this correspondence arranged? Let us have a state
+            characterized by $(O_1, E_1)$. Let $e \in E_1$ be one of potentially applicable
+            elements. If we apply element to a state, then we would get a new set of frontier
+            elements which we would denote as $O_1 \oplus e$. These new outputs should be
+            identified with outputs of some other state $(O_2, E_2)$. All these identifications
+            $O_1 \oplus e \equiv O_2$ settle transitional structure of finite-state machine.
+        </p>
     </div>
 </div>
 {% endblock %}
