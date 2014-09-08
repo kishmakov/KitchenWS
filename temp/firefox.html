@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS CSV</title>
+</head>
+<body>
+    <input type="file" id="input" />
+    <button id="button">Act</button>
+
+    <script type="text/javascript">
+        function triggerDialog() {
+            var selected_file = document.getElementById('input').files[0];            
+            // alert('Length of file = ' + selected_file.size());
+            console.log('Size: ' + selected_file.size);
+        }
+
+        var button = document.getElementById('button');        
+        button.addEventListener('click', triggerDialog);
+    </script>
+</body>
+</html>
