@@ -13,18 +13,34 @@
 <script type="text/javascript">
     function receivedText(e) {
         lines = e.target.result;
-        var newArr = JSON.parse(lines); 
+        var obj = JSON.parse(lines); 
+        alert('obj[a]=' + obj['a'] + ', obj[c] = ' + obj['c']);
+    }
+
+    function handleSelection() {        
+        var files = document.getElementById('input').files; 
+        if (!files.lenght) {            
+            var fr = new FileReader();
+            fr.onload = receivedText;
+            fr.readAsText(files[0]);        
+        }        
     }
 
     function triggerDialog() {
-        var file = document.getElementById('input').files[0];                        
-        var fr = new FileReader();
-        fr.onload = receivedText;
-        fr.readAsText(file);        
+        document.getElementById('input').click();        
     }
 
     var button = document.getElementById('button');        
     button.addEventListener('click', triggerDialog);
+
+    var file = document.getElementById('input');
+    file.addEventListener('change', handleSelection, false);
+
+    if (window.File && window.FileReader && window.FileList && window.Blob) {        
+        alert('Great success! All the File APIs are supported.');
+    } else {
+        alert('The File APIs are not fully supported in this browser.');
+    }
 </script>
 
 </body>
