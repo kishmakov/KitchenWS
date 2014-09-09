@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS</title>
+</head>
+<body>
+    <input type="file" id="input" />
+    <button id="button">Act</button>
+    <p id="list">
+        Text
+    </p>
+
+<script type="text/javascript">
+    function receivedText(e) {
+        lines = e.target.result;
+        var newArr = JSON.parse(lines); 
+    }
+
+    function triggerDialog() {
+        var file = document.getElementById('input').files[0];                        
+        var fr = new FileReader();
+        fr.onload = receivedText;
+        fr.readAsText(file);        
+    }
+
+    var button = document.getElementById('button');        
+    button.addEventListener('click', triggerDialog);
+</script>
+
+</body>
+</html>
