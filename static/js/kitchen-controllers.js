@@ -38,6 +38,7 @@ function ($rootScope, $location, $http) {
         $rootScope.firstName = data['first_name'];
         $rootScope.lastName = data['last_name'];
         $rootScope.navigate('/ide/html/projects/', 'projects');
+        instructDom();
     }
 
     function loginFailed(data, status) {

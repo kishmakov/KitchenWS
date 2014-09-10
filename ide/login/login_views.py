@@ -8,6 +8,10 @@ def auth_login(request):
         return HttpResponseNotAllowed(permitted_methods='POST')
 
     body = json.loads(request.body.decode("utf-8"))
+    ### TODO: remove when ready ###
+    body['username'] = 'john'
+    body['password'] = 'smith'
+    ### TODO: remove when ready ###
     user = authenticate(username=body['username'], password=body['password'])
     if user is not None:
         data = {'first_name': user.first_name, 'last_name': user.last_name}
