@@ -5,8 +5,9 @@
                 <br>
                 <h2>Ohh.</h2>
                 <br>
-                <input type="file" id="input" />
-                <button id="button">Open Project</button>
+                <button id="button" ng-click="triggerLoad()">Open Project</button>
+
+                <input type="file" id="input" ng-change="load()" ng-model="firstName" />
             </div>
         </div>
     </div>

@@ -38,7 +38,6 @@ function ($rootScope, $location, $http) {
         $rootScope.firstName = data['first_name'];
         $rootScope.lastName = data['last_name'];
         $rootScope.navigate('/ide/html/projects/', 'projects');
-        instructDom();
     }
 
     function loginFailed(data, status) {
@@ -85,6 +84,27 @@ function ($rootScope, $location, $http) {
 
         $http(load).success(logoutSucceed).error(function () {});
     };
+
+    /* load project */
+
+    function receivedText(e) {
+        var lines = e.target.result;
+        var obj = JSON.parse(lines);
+        alert('obj[a]=' + obj['a'] + ', obj[c] = ' + obj['c']);
+    }
+
+    function load() {
+        var files = document.getElementById('input').files;
+        if (!files.lenght) {
+            var fr = new FileReader();
+            fr.onload = receivedText;
+            fr.readAsText(files[0]);
+        }
+    }
+
+    $rootScope.triggerLoad = function () {
+        document.getElementById('input').click();
+    }
 
     /* mathjax */
 
