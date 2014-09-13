@@ -18,7 +18,7 @@
     }
 
     function handleSelection() {        
-        var files = document.getElementById('input').files; 
+        var files = document.getElementById('kitchen-file-input').files;
         if (!files.lenght) {            
             var fr = new FileReader();
             fr.onload = receivedText;
@@ -27,13 +27,13 @@
     }
 
     function triggerDialog() {
-        document.getElementById('input').click();        
+        document.getElementById('kitchen-file-input').click();
     }
 
     var button = document.getElementById('button');        
     button.addEventListener('click', triggerDialog);
 
-    var file = document.getElementById('input');
+    var file = document.getElementById('kitchen-file-input');
     file.addEventListener('change', handleSelection, false);
 
     if (window.File && window.FileReader && window.FileList && window.Blob) {        

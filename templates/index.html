@@ -12,6 +12,9 @@
     <div class="ng-scope" ng-controller="RootCtrl">
         <div id="header" class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
+                <div id="kitchen-hidden-input">
+                    <input type="file" id="kitchen-file-input" ng-change="load()" ng-model="firstName" />
+                </div>
                 <div class="header">
                     <a class="navbar-brand" ng-click="navigate('/ide/html/', '')">&nbsp;Kitchen IDE&nbsp;</a>
                 </div>

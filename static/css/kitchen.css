@@ -24,6 +24,12 @@ body {
     border-color: #222;
 }
 
+#kitchen-hidden-input {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
 .error-message {
     color: red;
 }

@@ -94,7 +94,7 @@ function ($rootScope, $location, $http) {
     }
 
     function load() {
-        var files = document.getElementById('input').files;
+        var files = document.getElementById('kitchen-file-input').files;
         if (!files.lenght) {
             var fr = new FileReader();
             fr.onload = receivedText;
@@ -103,8 +103,8 @@ function ($rootScope, $location, $http) {
     }
 
     $rootScope.triggerLoad = function () {
-        document.getElementById('input').click();
-    }
+        document.getElementById('kitchen-file-input').click();
+    };
 
     /* mathjax */
 
