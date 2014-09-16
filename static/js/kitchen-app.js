@@ -6,10 +6,12 @@ angular.module('kitchen', [
     'kitchen.controllers',
     'kitchen.services'])
 
-.config(['$routeProvider', '$httpProvider',
-function($routeProvider, $httpProvider) {
+.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+}])
+
+.config(['$routeProvider', function($routeProvider) {
 
 //    $rootScope.firstName = '';
 //    $rootScope.lastName = '';

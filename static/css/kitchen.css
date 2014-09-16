@@ -26,7 +26,7 @@ body {
 
 #kitchen-hidden-input {
     width: 1px;
-    height: 1px;
+    height: 0px;
     overflow: hidden;
 }
 
