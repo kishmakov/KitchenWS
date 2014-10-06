@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('kitchen.controllers', ['ngRoute'])
+angular.module('kitchen.controllers', ['ngRoute', 'KServices'])
 
-.controller('RootCtrl', ['$rootScope', '$location', '$http',
-function ($rootScope, $location, $http) {
+.controller('RootCtrl', ['$rootScope', '$location', '$http', 'KServicesLogin',
+function ($rootScope, $location, $http, KServicesLogin) {
     $rootScope.loggedIn = false;
     $rootScope.hasMathJax = false;
 
@@ -12,24 +12,27 @@ function ($rootScope, $location, $http) {
         password: ''
     };
 
-    $rootScope.state = {
-        'docs': '',
-        'settings': '',
-        'projects': '',
-        'about': ''
-    };
+    $rootScope.state = KServicesLogin.state;
+    $rootScope.navigate = KServicesLogin.navigate;
 
-    $rootScope.navigate = function(destanation, section) {
-        if (section != null)
-            for (var key in $rootScope.state) {
-                $rootScope.state[key] = '';
-            }
-
-        if (section in $rootScope.state)
-            $rootScope.state[section] = 'active';
-
-        $location.path(destanation);
-    };
+//    $rootScope.state = {
+//        'docs': '',
+//        'settings': '',
+//        'projects': '',
+//        'about': ''
+//    };
+//
+//    $rootScope.navigate = function(destanation, section) {
+//        if (section != null)
+//            for (var key in $rootScope.state) {
+//                $rootScope.state[key] = '';
+//            }
+//
+//        if (section in $rootScope.state)
+//            $rootScope.state[section] = 'active';
+//
+//        $location.path(destanation);
+//    };
 
     /* login */
 

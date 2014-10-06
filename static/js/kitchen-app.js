@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('kitchen', [
+angular.module('KApp', [
     'ngRoute',
     'ngCookies',
     'kitchen.controllers',
-    'kitchen.services'])
+    'KServices'])
 
 .config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';

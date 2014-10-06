@@ -1,10 +1,28 @@
 'use strict';
 
-angular.module('kitchen.services', [])
+angular.module('KServices', [])
 
-.factory('kitchenTitle', function () {
-    return {
-        title: '',
-        projectName: ''
+.factory('KServicesLogin', ['$location', function ($location) {
+    var login = {};
+
+    login.state = {
+        'docs': '',
+        'settings': '',
+        'projects': '',
+        'about': ''
     };
-});
+
+    login.navigate = function(destanation, section) {
+        if (section != null)
+            for (var key in login.state) {
+                login.state[key] = '';
+            }
+
+        if (section in login.state)
+            login.state[section] = 'active';
+
+        $location.path(destanation);
+    };
+
+    return login;
+}]);
