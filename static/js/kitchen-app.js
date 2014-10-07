@@ -3,8 +3,8 @@
 angular.module('KApp', [
     'ngRoute',
     'ngCookies',
-    'kitchen.controllers',
-    'KServices'])
+    'KC',
+    'KS'])
 
 .config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
@@ -133,32 +133,42 @@ angular.module('KApp', [
 }])
 
 .run(['$location', '$rootScope', '$templateCache', '$http',
-    function($location, $rootScope, $templateCache, $http) {
+function($location, $rootScope, $templateCache, $http) {
 
-        $rootScope.$on('$locationChangeStart', function(scope, next, current) {
-            if (current && current == next)
-                return;
+    MathJax.Hub.Config({
+        extensions: ['tex2jax.js','TeX/noErrors.js','TeX/AMSsymbols.js'],
+        jax: ['input/TeX','output/HTML-CSS'],
+        tex2jax: {
+            inlineMath: [['$','$'],['\\(','\\)']],
+            displayMath: [['\\[','\\]'], ['$$','$$']]
+        },
+        'HTML-CSS': {availableFonts:['TeX']}
+    });
 
-            var defaultTitle = 'The Kitchen';
-            var request = {
-                method: 'post',
-                url: $location.url().replace('html', 'json') + 'header/'
-            };
 
-            $http(request).success(function (data) {
-                $rootScope.title = data.title || defaultTitle;
-                if ('hasMathJax' in data)
-                    $rootScope.hasMathJax = data.hasMathJax;
+    $rootScope.$on('$locationChangeStart', function(scope, next, current) {
+        if (current && current == next)
+            return;
 
-            }).error(function () {
-                $rootScope.title = defaultTitle;
-            });
+        var defaultTitle = 'The Kitchen';
+        var request = {
+            method: 'post',
+            url: $location.url().replace('html', 'json') + 'header/'
+        };
+
+        $http(request).success(function (data) {
+            $rootScope.title = data.title || defaultTitle;
+            if ('hasMathJax' in data)
+                $rootScope.hasMathJax = data.hasMathJax;
+
+        }).error(function () {
+            $rootScope.title = defaultTitle;
         });
+    });
 
-        $rootScope.$on('$viewContentLoaded', function() {
-            $templateCache.removeAll();
-            $rootScope.reloadMathJax();
-        });
-    }
-]);
+    $rootScope.$on('$viewContentLoaded', function() {
+        $templateCache.removeAll();
+        $rootScope.reloadMathJax();
+    });
+}]);
 

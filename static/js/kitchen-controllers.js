@@ -1,92 +1,20 @@
 'use strict';
 
-angular.module('kitchen.controllers', ['ngRoute', 'KServices'])
+angular.module('KC', ['ngRoute', 'KS'])
 
-.controller('RootCtrl', ['$rootScope', '$location', '$http', 'KServicesLogin',
-function ($rootScope, $location, $http, KServicesLogin) {
-    $rootScope.loggedIn = false;
-    $rootScope.hasMathJax = false;
+.controller('RootCtrl',
+['$scope', 'KSNavigation', 'KSLogin', 'KSAuthorization',
+function ($scope, KSNavigation, KSLogin, KSAuthorization) {
+    $scope.loggedIn = false;
+    $scope.hasMathJax = false;
 
-    $rootScope.authorization = {
-        username: '',
-        password: ''
-    };
+    $scope.authorization = KSAuthorization;
 
-    $rootScope.state = KServicesLogin.state;
-    $rootScope.navigate = KServicesLogin.navigate;
+    $scope.state = KSNavigation.state;
+    $scope.navigate = KSNavigation.navigate;
 
-//    $rootScope.state = {
-//        'docs': '',
-//        'settings': '',
-//        'projects': '',
-//        'about': ''
-//    };
-//
-//    $rootScope.navigate = function(destanation, section) {
-//        if (section != null)
-//            for (var key in $rootScope.state) {
-//                $rootScope.state[key] = '';
-//            }
-//
-//        if (section in $rootScope.state)
-//            $rootScope.state[section] = 'active';
-//
-//        $location.path(destanation);
-//    };
-
-    /* login */
-
-    function loginSucceed(data) {
-        $rootScope.loggedIn = true;
-        $rootScope.firstName = data['first_name'];
-        $rootScope.lastName = data['last_name'];
-        $rootScope.navigate('/ide/html/projects/', 'projects');
-    }
-
-    function loginFailed(data, status) {
-        $rootScope.loggedIn = false;
-
-        if (status == '401') {
-            $location.path('/ide/html/login/again/');
-            return;
-        } else if (status == '420') {
-            $rootScope.firstName = data['first_name'];
-            $rootScope.lastName = data['last_name'];
-            $location.path('/ide/html/login/wait/');
-            return;
-        }
-
-        $location.path('/ide/html/login/fail/');
-    }
-
-    $rootScope.login = function () {
-        var load = {
-            method: 'post',
-            url: '/ide/json/login/',
-            data: JSON.stringify($rootScope.authorization)
-        };
-
-        $http(load).success(loginSucceed).error(loginFailed);
-    };
-
-    /* logout */
-
-    function logoutSucceed() {
-        $rootScope.loggedIn = false;
-        $rootScope.navigate('/ide/html/welcome/', '');
-    }
-
-    $rootScope.logout = function () {
-        if (!$rootScope.loggedIn)
-            return;
-
-        var load = {
-            method: 'post',
-            url: '/ide/json/logout/'
-        };
-
-        $http(load).success(logoutSucceed).error(function () {});
-    };
+    $scope.login = KSLogin.login;
+    $scope.logout = KSLogin.logout;
 
     /* load project */
 
@@ -105,24 +33,15 @@ function ($rootScope, $location, $http, KServicesLogin) {
         }
     }
 
-    $rootScope.triggerLoad = function () {
+    $scope.triggerLoad = function () {
         document.getElementById('kitchen-file-input').click();
     };
 
     /* mathjax */
 
-    MathJax.Hub.Config({
-        extensions: ['tex2jax.js','TeX/noErrors.js','TeX/AMSsymbols.js'],
-        jax: ['input/TeX','output/HTML-CSS'],
-        tex2jax: {
-            inlineMath: [['$','$'],['\\(','\\)']],
-            displayMath: [['\\[','\\]'], ['$$','$$']]
-        },
-        'HTML-CSS': {availableFonts:['TeX']}
-    });
 
-    $rootScope.reloadMathJax = function() {
-        if ($rootScope.hasMathJax)
+    $scope.reloadMathJax = function() {
+        if ($scope.hasMathJax)
             MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'kitchen-wrap-footer']);
     };
 }])
